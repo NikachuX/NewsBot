@@ -3,7 +3,7 @@ from aiogram import types
 from aiogram.filters import Command
 
 from create_bot import bot, dp
-from keyboard import get_on_start_main_kb, get_inline_keyboard_settings
+from keyboard import get_on_start_main_kb, cat
 from news import get_news
 from data_base import db
 from callbacks import router
@@ -19,7 +19,7 @@ async def start(message: types.Message):
 
 @dp.message(Command('Settings'))
 async def Settings(message: types.Message):
-    await message.answer(text="Настройте бота", reply_markup=get_inline_keyboard_settings())
+    await message.answer(text="Настройте категории бота", reply_markup=cat())
 
 @dp.message(Command('Info'))
 async def Info(message: types.Message):

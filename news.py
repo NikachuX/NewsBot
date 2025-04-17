@@ -9,7 +9,7 @@ async def fetch_rss(url):
 
 
 # Асинхронная функция для обработки новостей по категории
-async def get_news(message, *categories):
+async def get_news(message, categories):
 
     current_position = 0
 
