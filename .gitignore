@@ -1,0 +1,56 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.venv/
+env/
+venv/
+
+# PyCharm project settings
+.idea/
+
+# VS Code settings (если ты используешь)
+.vscode/
+
+# Git
+.git/
+
+# Database files
+*.db
+*.sqlite3
+
+# JSON, logs and other potentially generated files
+*.json
+*.log
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Python egg files
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+var/
+sdist/
+develop-eggs/
+
+# Test results
+*.cover
+*.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.spec
+
+# User-specific files
+*.swp
+*.bak
+*.tmp
+
