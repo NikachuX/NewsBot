@@ -23,3 +23,9 @@ def cat():
     btn6 = InlineKeyboardButton(text="Назад", callback_data='back')
     cat_keyboard = InlineKeyboardMarkup(inline_keyboard=[[btn1], [btn2], [btn3], [btn4], [btn5], [btn6]])
     return cat_keyboard
+
+def set():
+    btn1 = InlineKeyboardButton(text = "Добавить категории", callback_data='add')
+    btn2 = InlineKeyboardButton(text = "Удалить категории", callback_data='delete')
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[[btn1], [btn2]])
+    return keyboard

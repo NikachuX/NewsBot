@@ -31,10 +31,18 @@ class DataBase:
 
     def get_cat(self, user_id):
         self.db = sq.connect('users.db')
-        cats = self.db.cursor().execute("SELECT * FROM users WHERE user_id = ?", (user_id,)).fetchall()[0][1:]
+        cats = self.db.cursor().execute("SELECT * FROM users WHERE user_id = ?",
+                                        (user_id,)).fetchall()[0][1:]
         cats = [cat for cat in cats if cat is not None]
         self.db.close()
         return cats
+
+    def del_cat(self, user_id, categories):
+        self.db = sq.connect('users.db')
+        self.db.cursor().execute(f"UPDATE users SET {categories} = ? WHERE user_id = ?",
+                                 (None, user_id))
+        self.db.commit()
+        self.db.close()
 
 db = DataBase()
 
