@@ -8,3 +8,4 @@ dp = Dispatcher()
 class Settings(StatesGroup):
     add = State()
     delete = State()
+    set_keywords = State()

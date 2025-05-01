@@ -6,11 +6,8 @@ def get_on_start_main_kb():
     button2 = KeyboardButton(text="/Settings")
     button3 = KeyboardButton(text="/Info")
     button4 = KeyboardButton(text="/GetNews")
-    buttons_row1 = [button1]
-    buttons_row2 = [button2]
-    buttons_row3 = [button3]
-    buttons_row4 = [button4]
-    markup = ReplyKeyboardMarkup(keyboard=[buttons_row1, buttons_row2, buttons_row3, buttons_row4], resize_keyboard=True)
+    button5 = KeyboardButton(text="/Keywords")
+    markup = ReplyKeyboardMarkup(keyboard=[[button1], [button2], [button3], [button4], [button5]], resize_keyboard=True)
     return markup
 
 
@@ -27,5 +24,7 @@ def cat():
 def set():
     btn1 = InlineKeyboardButton(text = "Добавить категории", callback_data='add')
     btn2 = InlineKeyboardButton(text = "Удалить категории", callback_data='delete')
-    keyboard = InlineKeyboardMarkup(inline_keyboard=[[btn1], [btn2]])
+    btn3 = InlineKeyboardButton(text = "Установить ключевые слова", callback_data='set_keywords')
+    btn4 = InlineKeyboardButton(text = "Сбросить ключевые слова", callback_data='reset')
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[[btn1], [btn2], [btn3], [btn4]])
     return keyboard

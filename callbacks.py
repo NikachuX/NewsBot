@@ -7,7 +7,6 @@ from data_base import db
 
 router = Router()
 
-
 @router.callback_query(F.data == 'world')
 async def world(callback: types.CallbackQuery, state: FSMContext):
     await callback.message.delete()
@@ -85,15 +84,27 @@ async def back(callback: types.CallbackQuery, state: FSMContext):
     await bot.send_message(callback.from_user.id, text="Теперь вы можете получать новости по выбранным категориям")
 
 @router.callback_query(F.data == 'add')
-async def categories(callback: types.CallbackQuery, state: FSMContext):
+async def add(callback: types.CallbackQuery, state: FSMContext):
     await callback.message.delete()
     await state.set_state(Settings.add)
     await bot.send_message(callback.from_user.id, text="Выберете категории, которые хотите получать",
                            reply_markup=cat())
 
 @router.callback_query(F.data == 'delete')
-async def categories(callback: types.CallbackQuery, state: FSMContext):
+async def delete(callback: types.CallbackQuery, state: FSMContext):
     await callback.message.delete()
     await state.set_state(Settings.delete)
     await bot.send_message(callback.from_user.id, text="Выберете категории, которые хотите удалить",
                            reply_markup=cat())
+
+@router.callback_query(F.data == 'set_keywords')
+async def set_key(callback: types.CallbackQuery, state: FSMContext):
+    await callback.message.delete()
+    await state.set_state(Settings.set_keywords)
+    await bot.send_message(callback.from_user.id, text="Введите ключевые слова по которым хотите получать новости через пробел")
+
+@router.callback_query(F.data == 'reset')
+async def reset(callback: types.CallbackQuery):
+    await callback.message.delete()
+    db.reset_keywords(callback.from_user.id)
+    await bot.send_message(callback.from_user.id, text="Ключевые слова сброшены")
